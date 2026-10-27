@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  scroll-behavior: smooth;
+}
+
+/* MAIN BODY - CRISP WHITE SHADE */
+body {
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 9px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+::-webkit-scrollbar-thumb { background: #0046be; border-radius: 6px; }
+::-webkit-scrollbar-thumb:hover { background: #003087; }
+
+@layer components {
+  /* Medium Bold Navigation Class */
+  .nav-link {
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    transition: color 0.2s ease;
+  }
+
+  /* White Theme Cards */
+  .tech-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 2px 12px -2px rgba(15, 23, 42, 0.06);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .tech-card:hover {
+    transform: translateY(-6px);
+    border-color: #0046be;
+    box-shadow: 0 18px 30px -10px rgba(0, 70, 190, 0.18);
+  }
+
+  /* Chairman Spotlight Card */
+  .chairman-card {
+    background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+    border: 2px solid #ffcc00;
+    box-shadow: 0 10px 30px -5px rgba(0, 70, 190, 0.12), 0 0 20px rgba(255, 204, 0, 0.25);
+  }
+
+  /* Scrolling Ticker */
+  .ticker-wrap { overflow: hidden; white-space: nowrap; }
+  .ticker-track { display: inline-flex; animation: ticker 25s linear infinite; }
+
+  /* Filter Tab Active States */
+  .filter-btn { transition: all 0.2s ease; }
+  .filter-btn.active {
+    background-color: #0046be;
+    color: #ffffff;
+    border-color: #0046be;
+    box-shadow: 0 4px 14px rgba(0, 70, 190, 0.28);
+  }
+
+  /* Product Image Zoom Frame */
+  .img-frame { position: relative; overflow: hidden; background-color: #f1f5f9; }
+  .img-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.45s ease;
+  }
+  .tech-card:hover .img-frame img { transform: scale(1.08); }
+
+  .badge {
+    font-family: var(--font-space-grotesk), "Space Grotesk", sans-serif;
+    letter-spacing: 0.03em;
+  }
+
+  /* Hidden until GSAP reveals it (see ScrollAnimations / ProductShowcase) */
+  .fade-up { opacity: 0; }
+
+  /* Shared form control look (contact form + inquiry modal) */
+  .form-input {
+    @apply w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-800 focus:outline-none focus:border-bblue transition;
+  }
+}
+
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
